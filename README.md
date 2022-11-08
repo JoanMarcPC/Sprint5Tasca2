@@ -5,3 +5,4 @@
 - https://www.baeldung.com/hibernate-one-to-many
 - https://www.bezkoder.com/spring-boot-jwt-authentication/
 - https://www.bezkoder.com/websecurityconfigureradapter-deprecated-spring-boot/
+- https://www.baeldung.com/spring-data-exists-query
