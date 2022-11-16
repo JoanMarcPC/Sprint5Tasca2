@@ -219,29 +219,23 @@ public class RestController1 {
         ResponseEntity rp;
 
         try {
-            List<UserDTO> users =  userServiceImp.findAll();
-
-            if (users.isEmpty()) {
-                rp = ResponseEntity.status(HttpStatus.NOT_FOUND).body("no hi ha jugadors per mostrar ranking");
+            List<Throw> _throws = throwServiceImp.findAll();
+            double wins = 0;
+            if (_throws.isEmpty()) {
+                rp = ResponseEntity.status(HttpStatus.NOT_FOUND).body("no hi ha cap tirada per mostrar ranking");
             } else {
-                HashMap<String, Double> ranking = new HashMap<String, Double>();
 
-                for (UserDTO user : users) {
-                    List<Throw> _throws = throwServiceImp.findAllByUser_id(user.getId());
-                    double wins = 0;
                     for(Throw _throw:_throws){
                         if(_throw.isWin()){
                             wins+=1;
                         }
-
                     }
                     wins = (wins/_throws.size())*100;
-                    ranking.put(user.getName(), wins);
+
                 }
 
+                rp = ResponseEntity.status(HttpStatus.OK).body(wins);
 
-                rp = ResponseEntity.status(HttpStatus.OK).body(ranking);
-            }
         } catch (Exception e) {
             rp = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

@@ -9,7 +9,8 @@ import java.util.Optional;
 
 @Transactional
 public interface ThrowService {
-    List<Throw> findAllByUser_id(long id);
+    Iterable<Throw> findAll();
+    Iterable<Throw> findAllByUser_id(long id);
 
     Throw add(User user);
 

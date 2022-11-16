@@ -18,6 +18,11 @@ public class ThrowServiceImp implements ThrowService {
     ThrowRepository throwRepository;
 
     @Override
+    public List<Throw> findAll() {
+        return throwRepository.findAll();
+    }
+
+    @Override
     public List<Throw> findAllByUser_id(long id) {
         return throwRepository.findAllByUser_id(id);
     }
