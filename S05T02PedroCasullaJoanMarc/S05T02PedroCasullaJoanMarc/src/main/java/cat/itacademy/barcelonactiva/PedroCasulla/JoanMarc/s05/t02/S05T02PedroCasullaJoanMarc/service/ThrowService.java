@@ -1,18 +1,22 @@
 package cat.itacademy.barcelonactiva.PedroCasulla.JoanMarc.s05.t02.S05T02PedroCasullaJoanMarc.service;
 
 import cat.itacademy.barcelonactiva.PedroCasulla.JoanMarc.s05.t02.S05T02PedroCasullaJoanMarc.domain.Throw;
+import cat.itacademy.barcelonactiva.PedroCasulla.JoanMarc.s05.t02.S05T02PedroCasullaJoanMarc.domain.User;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public interface ThrowService {
-    Iterable<Throw> findAll();
+    List<Throw> findAllByUser_id(long id);
 
-    Optional<Throw> findById(Long Id);
+    Throw add(User user);
 
-    Throw add(Throw _throw);
 
-    void deleteById(Long id);
+    void deleteAllByUser_id(long id);
 
-    Throw updateById(Long id,Throw _throw);
+    boolean existsByUser_id(long id);
 
+    int countByUser_id(long id);
 }

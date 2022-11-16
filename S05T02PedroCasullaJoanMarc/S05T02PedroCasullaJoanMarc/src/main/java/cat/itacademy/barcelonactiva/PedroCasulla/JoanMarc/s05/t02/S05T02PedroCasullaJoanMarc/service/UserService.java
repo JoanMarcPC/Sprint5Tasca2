@@ -1,18 +1,27 @@
 package cat.itacademy.barcelonactiva.PedroCasulla.JoanMarc.s05.t02.S05T02PedroCasullaJoanMarc.service;
 
 import cat.itacademy.barcelonactiva.PedroCasulla.JoanMarc.s05.t02.S05T02PedroCasullaJoanMarc.domain.User;
+import cat.itacademy.barcelonactiva.PedroCasulla.JoanMarc.s05.t02.S05T02PedroCasullaJoanMarc.dto.UserDTO;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
-
+@Transactional
 public interface UserService {
-    Iterable<User> findAll();
+    Iterable<UserDTO> findAll();
 
-    Optional<User> findById(Long Id);
+    Optional<UserDTO> findById(long Id);
 
-    User add(User user);
+    Optional<UserDTO> add(User user);
 
-    void deleteById(Long id);
+    void deleteById(long id);
 
-    User updateById(Long id,User user);
+    Optional<UserDTO> updateById(long id,User user);
+
+    boolean existByName(String name);
+     UserDTO EntityToDTO(User entity);
+     User DTOtoEntity (UserDTO dto);
+
+     boolean existsById(long id);
 
 }

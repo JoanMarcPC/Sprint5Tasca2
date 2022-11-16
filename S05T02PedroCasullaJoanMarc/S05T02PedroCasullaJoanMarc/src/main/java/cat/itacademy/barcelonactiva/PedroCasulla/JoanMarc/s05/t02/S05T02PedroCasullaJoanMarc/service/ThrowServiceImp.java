@@ -1,32 +1,47 @@
 package cat.itacademy.barcelonactiva.PedroCasulla.JoanMarc.s05.t02.S05T02PedroCasullaJoanMarc.service;
 
 import cat.itacademy.barcelonactiva.PedroCasulla.JoanMarc.s05.t02.S05T02PedroCasullaJoanMarc.domain.Throw;
+import cat.itacademy.barcelonactiva.PedroCasulla.JoanMarc.s05.t02.S05T02PedroCasullaJoanMarc.domain.User;
+import cat.itacademy.barcelonactiva.PedroCasulla.JoanMarc.s05.t02.S05T02PedroCasullaJoanMarc.repository.ThrowRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
-public class ThrowServiceImp implements ThrowService{
+@Service
+
+public class ThrowServiceImp implements ThrowService {
+
+    @Autowired
+    ThrowRepository throwRepository;
+
     @Override
-    public Iterable<Throw> findAll() {
-        return null;
+    public List<Throw> findAllByUser_id(long id) {
+        return throwRepository.findAllByUser_id(id);
     }
 
     @Override
-    public Optional<Throw> findById(Long Id) {
-        return Optional.empty();
+    public Throw add(User user) {
+        return throwRepository.save(new Throw (user));
     }
 
     @Override
-    public Throw add(Throw _throw) {
-        return null;
+    public void deleteAllByUser_id(long id) {
+        throwRepository.deleteAllByUser_id(id);
     }
 
     @Override
-    public void deleteById(Long id) {
 
+    public boolean existsByUser_id(long id) {
+       return throwRepository.existsByUser_id(id);
     }
 
     @Override
-    public Throw updateById(Long id, Throw _throw) {
-        return null;
+    public int countByUser_id(long id) {
+        return throwRepository.countByUser_id(id);
     }
+
+
 }
