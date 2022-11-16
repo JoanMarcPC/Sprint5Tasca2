@@ -22,9 +22,6 @@ public class User {
     @Column(name = "date", updatable = false)
     private LocalDateTime date;
 
-    @Column(name = "success", nullable = true)
-    private double success ;
-
     @Column(name = "pass",nullable = false)
     private String pass;
 
